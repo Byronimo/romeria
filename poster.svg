@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" role="img" aria-labelledby="title desc">
+  <title id="title">La Romería cobra vida</title>
+  <desc id="desc">Portada temporal para la animación de la Romería.</desc>
+  <defs>
+    <radialGradient id="g" cx="50%" cy="34%" r="78%">
+      <stop offset="0%" stop-color="#243321"/>
+      <stop offset="58%" stop-color="#111711"/>
+      <stop offset="100%" stop-color="#050605"/>
+    </radialGradient>
+  </defs>
+  <rect width="1080" height="1920" fill="url(#g)"/>
+  <g fill="#f2ead4" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">
+    <text x="540" y="845" font-size="78">La Romería</text>
+    <text x="540" y="940" font-size="78">cobra vida</text>
+  </g>
+  <text x="540" y="1045" fill="#d8d0bc" opacity="0.82" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34">Toca para ver la animación</text>
+  <g transform="translate(540 1195)">
+    <circle r="58" fill="#f4f1e9"/>
+    <path d="M-12 -27 L34 0 L-12 27 Z" fill="#111"/>
+  </g>
+</svg>
