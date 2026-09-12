@@ -9,148 +9,49 @@
     :root { color-scheme: dark; }
     * { box-sizing: border-box; }
     html, body { margin: 0; width: 100%; height: 100%; background: #000; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      overflow: hidden;
-    }
-    .app {
-      position: fixed;
-      inset: 0;
-      background: #000;
-      display: grid;
-      place-items: center;
-    }
-    video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      background: #000;
-    }
-    .overlay {
-      position: absolute;
-      inset: 0;
-      z-index: 3;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-end;
-      text-align: center;
-      padding: 28px 22px calc(34px + env(safe-area-inset-bottom));
-      background: linear-gradient(to top, rgba(0,0,0,.82) 0%, rgba(0,0,0,.28) 36%, rgba(0,0,0,0) 64%);
-      transition: opacity .25s ease;
-    }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; overflow: hidden; }
+    .app { position: fixed; inset: 0; background: #000; display: grid; place-items: center; }
+    video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #000; }
+    .overlay { position: absolute; inset: 0; z-index: 3; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; text-align: center; padding: 28px 22px calc(34px + env(safe-area-inset-bottom)); background: linear-gradient(to top, rgba(0,0,0,.82) 0%, rgba(0,0,0,.28) 36%, rgba(0,0,0,0) 64%); transition: opacity .25s ease; }
     .overlay.hidden { opacity: 0; pointer-events: none; }
-    h1 {
-      margin: 0 0 10px;
-      font-size: clamp(28px, 8vw, 44px);
-      line-height: 1.02;
-      letter-spacing: -.02em;
-      max-width: 720px;
-    }
-    p {
-      margin: 0 0 22px;
-      font-size: 16px;
-      line-height: 1.4;
-      color: rgba(255,255,255,.84);
-    }
-    button {
-      appearance: none;
-      border: 0;
-      border-radius: 999px;
-      padding: 15px 26px;
-      min-width: 150px;
-      font: inherit;
-      font-size: 17px;
-      font-weight: 700;
-      cursor: pointer;
-    }
+    h1 { margin: 0 0 10px; font-size: clamp(28px, 8vw, 44px); line-height: 1.02; letter-spacing: -.02em; max-width: 720px; }
+    p { margin: 0 0 22px; font-size: 16px; line-height: 1.4; color: rgba(255,255,255,.84); }
+    button { appearance: none; border: 0; border-radius: 999px; padding: 15px 26px; min-width: 150px; font: inherit; font-size: 17px; font-weight: 700; cursor: pointer; }
     .primary { background: #fff; color: #000; }
-    .controls {
-      position: absolute;
-      z-index: 4;
-      top: calc(14px + env(safe-area-inset-top));
-      right: 14px;
-      display: flex;
-      gap: 8px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .2s ease;
-    }
+    .controls { position: absolute; z-index: 4; top: calc(14px + env(safe-area-inset-top)); right: 14px; display: flex; gap: 8px; opacity: 0; pointer-events: none; transition: opacity .2s ease; }
     .controls.show { opacity: 1; pointer-events: auto; }
-    .controls button {
-      min-width: 0;
-      padding: 10px 14px;
-      font-size: 14px;
-      color: #fff;
-      background: rgba(0,0,0,.48);
-      border: 1px solid rgba(255,255,255,.16);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-    .end {
-      position: absolute;
-      inset: 0;
-      z-index: 5;
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      padding: 24px;
-      text-align: center;
-      background: rgba(0,0,0,.86);
-    }
+    .controls button { min-width: 0; padding: 10px 14px; font-size: 14px; color: #fff; background: rgba(0,0,0,.48); border: 1px solid rgba(255,255,255,.16); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+    .end { position: absolute; inset: 0; z-index: 5; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 24px; text-align: center; background: rgba(0,0,0,.86); }
     .end.show { display: flex; }
     .end h2 { margin: 0; font-size: 25px; }
     .end p { margin: 0 0 6px; }
-    .status {
-      position: absolute;
-      z-index: 6;
-      inset: 0;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 30px;
-      text-align: center;
-      background: #000;
-      color: #fff;
-    }
+    .status { position: absolute; z-index: 6; inset: 0; display: none; align-items: center; justify-content: center; padding: 30px; text-align: center; background: #000; color: #fff; }
     .status.show { display: flex; }
   </style>
 </head>
 <body>
   <main class="app">
-    <video id="video" playsinline webkit-playsinline preload="metadata" poster="poster.svg">
-      <source src="animation.mp4" type="video/mp4" />
+    <video id="video" playsinline webkit-playsinline preload="metadata" poster="poster.jpg">
+      <source src="romeria_animation.mp4" type="video/mp4" />
     </video>
-
     <div id="controls" class="controls">
       <button id="restartButton" type="button">Reiniciar</button>
       <button id="muteButton" type="button">Silenciar</button>
     </div>
-
     <section id="startOverlay" class="overlay">
       <h1>La Romería cobra vida</h1>
       <p>Toca para ver la animación.</p>
       <button id="playButton" class="primary" type="button">Ver animación</button>
     </section>
-
     <section id="endScreen" class="end">
       <h2>¿Otra vez?</h2>
       <p>Puedes volver a ver la animación.</p>
       <button id="replayButton" class="primary" type="button">Repetir</button>
     </section>
-
     <div id="status" class="status">
-      <div>
-        <strong>La animación todavía no está disponible.</strong><br /><br />
-        Vuelve a intentarlo en unos minutos.
-      </div>
+      <div><strong>La animación todavía no está disponible.</strong><br /><br />Vuelve a intentarlo en unos minutos.</div>
     </div>
   </main>
-
   <script>
     const video = document.getElementById('video');
     const startOverlay = document.getElementById('startOverlay');
@@ -161,37 +62,19 @@
     const replayButton = document.getElementById('replayButton');
     const restartButton = document.getElementById('restartButton');
     const muteButton = document.getElementById('muteButton');
-
     async function playFromStart(reset = false) {
       if (reset) video.currentTime = 0;
       startOverlay.classList.add('hidden');
       endScreen.classList.remove('show');
       controls.classList.add('show');
-      try {
-        await video.play();
-      } catch (error) {
-        startOverlay.classList.remove('hidden');
-        controls.classList.remove('show');
-      }
+      try { await video.play(); } catch (error) { startOverlay.classList.remove('hidden'); controls.classList.remove('show'); }
     }
-
     playButton.addEventListener('click', () => playFromStart(false));
     replayButton.addEventListener('click', () => playFromStart(true));
     restartButton.addEventListener('click', () => playFromStart(true));
-
-    muteButton.addEventListener('click', () => {
-      video.muted = !video.muted;
-      muteButton.textContent = video.muted ? 'Activar sonido' : 'Silenciar';
-    });
-
-    video.addEventListener('ended', () => {
-      controls.classList.remove('show');
-      endScreen.classList.add('show');
-    });
-
-    video.addEventListener('error', () => {
-      status.classList.add('show');
-    });
+    muteButton.addEventListener('click', () => { video.muted = !video.muted; muteButton.textContent = video.muted ? 'Activar sonido' : 'Silenciar'; });
+    video.addEventListener('ended', () => { controls.classList.remove('show'); endScreen.classList.add('show'); });
+    video.addEventListener('error', () => { status.classList.add('show'); });
   </script>
 </body>
 </html>
